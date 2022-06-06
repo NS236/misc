@@ -4,7 +4,7 @@ class Vector2D {
     this._x = x;
     this._y = y;
   }
-  
+
   /**Static Methods**/
   // returns a new zero vector (Vector2D)
   static zero() {
@@ -43,7 +43,7 @@ class Vector2D {
   static scale(v, k) {
     return new Vector2D(v.x * k, v.y * k);
   }
-  
+
   /**Accessing Values**/
   // get x coordinate
   get x() {
@@ -58,10 +58,10 @@ class Vector2D {
     return Math.sqrt(this._x**2 + this._y**2);
   }
   // get direction/angle
-  get dir(degrees = false) {
-    return Math.atan2(this._y, this._x) * (degrees ? (180 / Math.PI) : 1);
+  get dir() {
+    return Math.atan2(this._y, this._x);
   }
-  
+
   /**Setting Values**/
   // set x coordinate
   setX(x) {
@@ -93,7 +93,7 @@ class Vector2D {
     this._x = r * Math.cos(θ);
     this._y = r * Math.sin(θ);
   }
-  
+
   /**Instance Vector Operations**/
   // add another vector to instance
   add(v) {
@@ -114,9 +114,9 @@ class Vector2D {
   norm() {
     let r = this.mag;
     this._x = (r != 0) ? this.x / r : 0;
-    this._x = (r != 0) ? this.y / r : 0;
+    this._y = (r != 0) ? this.y / r : 0;
   }
-  
+
   /**Output**/
   // get array of either polar or cartesian coordinates 
   getArray(polar = false) {
@@ -128,10 +128,10 @@ class Vector2D {
   }
   // get string of either polar or cartesian coordinates separated by a space
   getString(polar = false) {
-    return !polar ? (this._x + " " + this._y) : (this._mag + " " + this._dir);
+    return !polar ? (this._x + " " + this._y) : (this.mag + " " + this.dir);
   }
   // get copy of instance
-  copy(v) {
-    return new Vector2D(v.x, v.y);
+  copy() {
+    return new Vector2D(this.x, this.y);
   }
 }
