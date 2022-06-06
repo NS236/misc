@@ -1,4 +1,4 @@
-class Vector2D() {
+class Vector2D {
   //default is zero vector
   constructor(x = 0, y = 0) {
     this._x = x;
