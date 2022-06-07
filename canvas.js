@@ -1,4 +1,4 @@
-const defaultOptions = {
+var defaultOptions = {
   // top-left, top-center, top-right, center-left, center-center, center-right, bottom-left, bottom-center, bottom-right
   align: "top-left",
   onscreen: true,
@@ -6,16 +6,16 @@ const defaultOptions = {
 };
 
 function createCanvas(w, h, options = defaultOptions) {
-  const c = document.createElement("canvas");
+  var c = document.createElement("canvas");
   
-  const altContent = document.createTextNode("Sorry, your browser does not support HTML canvas.");
+  var altContent = document.createTextNode("Sorry, your browser does not support HTML canvas.");
   c.appendChild(altContent);
   
-  const width = document.createAttribute("width");
+  var width = document.createAttribute("width");
   width.value = w;
   c.setAttributeNode(width);
   
-  const height = document.createAttribute("height");
+  var height = document.createAttribute("height");
   height.value = h;
   c.setAttributeNode(height);
   
@@ -70,16 +70,16 @@ function createCanvas(w, h, options = defaultOptions) {
 }
 
 function createOffscreenCanvas(w, h) {
-  const offscreenOptions = {
+  var offscreenOptions = {
     onscreen: false,
   };
   return createCanvas(w, h, offscreenOptions);
 }
 
 function fullscreenCanvas() {
-  const width = window.innerWidth;
-  const height = window.innerHeight;
-  const fullscreenOptions = {
+  var width = window.innerWidth;
+  var height = window.innerHeight;
+  var fullscreenOptions = {
     align: "top-left",
     onscreen: true,
     container: document.body,
