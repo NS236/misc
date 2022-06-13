@@ -2,7 +2,7 @@ const defaultOptions = {
   // top-left, top-center, top-right, center-left, center-center, center-right, bottom-left, bottom-center, bottom-right
   align: "top-left",
   onscreen: true,
-  container: document.body,
+  container: window.document.body,
 };
 
 function createCanvas(w, h, options = defaultOptions) {
@@ -82,8 +82,8 @@ function fullscreenCanvas() {
   const fullscreenOptions = {
     align: "top-left",
     onscreen: true,
-    container: document.body,
+    container: window.document.body,
   };
-  document.body.style.margin = "0px";
+  container.style.margin = "0px";
   return createCanvas(width, height, fullscreenOptions);
 }
