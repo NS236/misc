@@ -4,25 +4,33 @@ const defaultOptions = {
   onscreen: true,
   container: window.document.body,
 };
+const fullscreenOptions = {
+  align: "top-left",
+  onscreen: true,
+  container: window.document.body,
+};
+const offscreenOptions = {
+  onscreen: false,
+};
 
 function createCanvas(w, h, options = defaultOptions) {
   const c = document.createElement("canvas");
-  
+
   const altContent = document.createTextNode("Sorry, your browser does not support HTML canvas.");
   c.appendChild(altContent);
-  
+
   const width = document.createAttribute("width");
   width.value = w;
   c.setAttributeNode(width);
-  
+
   const height = document.createAttribute("height");
   height.value = h;
   c.setAttributeNode(height);
-  
-  if(options.onscreen) {
+
+  if (options.onscreen) {
     options.container.style.position = "relative";
     c.style.position = "absolute";
-    switch(options.align) {
+    switch (options.align) {
       case "top-left":
         c.top = "0px";
         c.left = "0px";
@@ -65,25 +73,17 @@ function createCanvas(w, h, options = defaultOptions) {
     }
     options.container.appendChild(c);
   }
-  
+
   return c;
 }
 
 function createOffscreenCanvas(w, h) {
-  const offscreenOptions = {
-    onscreen: false,
-  };
   return createCanvas(w, h, offscreenOptions);
 }
 
 function fullscreenCanvas() {
   const width = window.innerWidth;
   const height = window.innerHeight;
-  const fullscreenOptions = {
-    align: "top-left",
-    onscreen: true,
-    container: window.document.body,
-  };
-  container.style.margin = "0px";
+  fullscreenOptions.container.style.margin = "0px";
   return createCanvas(width, height, fullscreenOptions);
 }
